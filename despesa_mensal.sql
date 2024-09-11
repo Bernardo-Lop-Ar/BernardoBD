@@ -1,0 +1,7 @@
+USE ex4;
+
+CREATE TABLE despesa_mensal (
+	id_despesa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    despesa FLOAT NOT NULL,
+    data_despesa DATE DEFAULT NULL
+    )ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
