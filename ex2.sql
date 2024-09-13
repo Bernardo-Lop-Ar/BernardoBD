@@ -1,18 +1,19 @@
-USE ex8;
+USE ex12;
 
-CREATE TABLE livros (
-	id_livro INT NOT NULL PRIMARY KEY,
-    nome_livro VARCHAR(100) NOT NULL,
-    descricao_livro VARCHAR(255) NOT NULL,
-    id_autor INT NOT NULL,
-    FOREIGN KEY (id_autor) REFERENCES autor(id_autor)
+CREATE TABLE Clientes (
+	id_cliente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) DEFAULT NULL,
+    telefone VARCHAR(20) DEFAULT NULL,
+    email VARCHAR(150) DEFAULT NULL,
+    id_pedido INT
     );
     
-CREATE TABLE autor (
-	id_autor INT NOT NULL PRIMARY KEY,
-    nome_autor VARCHAR(100) NOT NULL,
-    dtNasc DATE NOT NULL,
-    livros_publicados INT NOT NULL
+CREATE TABLE Pedido (
+	id_pedido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    desc_pedido VARCHAR(255) DEFAULT NULL,
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
     );
-    
--- Ambas as entidades são primárias, e possuem um relacionamento de muitos para muitos
+
+ALTER TABLE Clientes ADD CONSTRAINT id_categoria
+FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido);
