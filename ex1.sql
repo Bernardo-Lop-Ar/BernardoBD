@@ -1,29 +1,22 @@
-CREATE DATABASE ex8;
-USE ex8;
+CREATE DATABASE ex12;
+USE ex12;
 
-CREATE TABLE alunos (
-	id_aluno INT NOT NULL PRIMARY KEY,
-    nome_aluno VARCHAR(100) NOT NULL,
-    cpf_aluno VARCHAR(15),
-    dtNasc_aluno DATE NOT NULL
+CREATE TABLE Autor (
+	id_autor INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    nome VARCHAR(255) DEFAULT NULL,
+    livros_publicados INT DEFAULT NULL
     );
     
-CREATE TABLE professores (
-	id_professor INT NOT NULL PRIMARY KEY,
-    nome_professor VARCHAR(100) NOT NULL,
-    cpf_professor VARCHAR(15) NOT NULL,
-    materia VARCHAR(100) NOT NULL
+CREATE TABLE Livros (
+	id_livro INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    titulo VARCHAR(150) DEFAULT NULL,
+    dtPublicacao DATE DEFAULT NULL
     );
     
-CREATE TABLE cursos (
-	id_curso INT NOT NULL PRIMARY KEY,
-    nome_curso VARCHAR(100) NOT NULL,
-    descricao_curso VARCHAR(255) NOT NULL,
-	id_aluno INT NOT NULL,
-    id_professor INT NOT NULL,
-    FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno),
-    FOREIGN KEY (id_professor) REFERENCES professores(id_professor)
+CREATE TABLE Autor_Livro (
+	id_autor_livro INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_autor INT,
+    id_livro INT,
+    FOREIGN KEY (id_autor) REFERENCES Autor(id_autor),
+    FOREIGN KEY (id_livro) REFERENCES Livros(id_livro)
     );
-    
--- Todas as entidades podem ser consideradas primárias, e todos os relacionamentos
--- Aluno e Curso, ou Curso e Professor, ou Aluno e Professor tem um relacionamento de muitos para muitos 
